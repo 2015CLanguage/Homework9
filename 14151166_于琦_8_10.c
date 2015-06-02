@@ -1,0 +1,65 @@
+#include<stdio.h>
+void exchange(int *p)
+{
+    int *pmax, *pmin,i,j,k;
+	pmax=p;
+	pmin=p;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+		    if(*(p+5*i+j)>*pmax)
+				pmax=p+5*i+j;
+			else
+				pmin=p+5*i+j;
+		}
+	}
+	k=*(p+12);
+	*(p+12)=*pmax;
+	*pmax=k;
+	k=*p;
+	*p=*pmin;
+	*pmin=k;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+		    if((*(p+5*i+j)<*pmin)&&(p+5*i+j!=p))
+				pmin=p+5*i+j;
+		}
+	}
+	k=*(p+4);
+	*(p+4)=*pmin;
+	*pmin=k;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+		    if((*(p+5*i+j)<*pmin)&&(p+5*i+j!=p)&&(p+5*i+j!=(p+4)))
+				pmin=p+5*i+j;
+		}
+	}
+	k=*(p+20);
+	*(p+20)=*pmin;
+	*pmin=k;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+		    if((*(p+5*i+j)<*pmin)&&(p+5*i+j!=p)&&(p+5*i+j!=(p+4))&&(p+5*i+j!=(p+20)))
+				pmin=p+5*i+j;
+		}
+	}
+	k=*(p+24);
+	*(p+24)=*pmin;
+	*pmin=k;
+}
+void main()
+{
+    int i,j,a[5][5],*p;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+		    scanf("%d",&a[i][j]);
+		}
+	}
+	p=a[0];
+    exchange(p);
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+		    printf("%5d",a[i][j]);
+		}
+		printf("\n");
+	}
+}
