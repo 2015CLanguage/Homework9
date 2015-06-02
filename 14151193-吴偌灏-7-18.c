@@ -2,38 +2,38 @@
 void main()
 {
 	int a,b,c,i;
-	scanf("%d%d%d",a,b,c);
+	scanf("%d%d%d",&a,&b,&c);
 	if(a%400==0)i=1;
 	if(a%4==0&&a%100!=0)i=1;
 	else i=0;
 	if(i==1)
 	{
-	if(b=1){printf("这一天是%d年的第%d天",a,c);}
-	if(b=2){printf("这一天是%d年的第%d天",a,c+31);}
-	if(b=3){printf("这一天是%d年的第%d天",a,c+60);}
-	if(b=4){printf("这一天是%d年的第%d天",a,c+91);}
-	if(b=5){printf("这一天是%d年的第%d天",a,c+121);}
-	if(b=6){printf("这一天是%d年的第%d天",a,c+152);}
-	if(b=7){printf("这一天是%d年的第%d天",a,c+182);}
-	if(b=8){printf("这一天是%d年的第%d天",a,c+213);}
-	if(b=9){printf("这一天是%d年的第%d天",a,c+244);}
-	if(b=10){printf("这一天是%d年的第%d天",a,c+274);}
-	if(b=11){printf("这一天是%d年的第%d天",a,c+305);}
-	if(b=12){printf("这一天是%d年的第%d天",a,c+335);}
+	if(b==1){printf("这一天是%d年的第%d天",a,c);}
+	if(b==2){printf("这一天是%d年的第%d天",a,c+31);}
+	if(b==3){printf("这一天是%d年的第%d天",a,c+60);}
+	if(b==4){printf("这一天是%d年的第%d天",a,c+91);}
+	if(b==5){printf("这一天是%d年的第%d天",a,c+121);}
+	if(b==6){printf("这一天是%d年的第%d天",a,c+152);}
+	if(b==7){printf("这一天是%d年的第%d天",a,c+182);}
+	if(b==8){printf("这一天是%d年的第%d天",a,c+213);}
+	if(b==9){printf("这一天是%d年的第%d天",a,c+244);}
+	if(b==10){printf("这一天是%d年的第%d天",a,c+274);}
+	if(b==11){printf("这一天是%d年的第%d天",a,c+305);}
+	if(b==12){printf("这一天是%d年的第%d天",a,c+335);}
 	}
 	else
 	{
-	if(b=1){printf("这一天是%d年的第%d天",a,c);}
-	if(b=2){printf("这一天是%d年的第%d天",a,c+31);}
-	if(b=3){printf("这一天是%d年的第%d天",a,c+59);}
-	if(b=4){printf("这一天是%d年的第%d天",a,c+90);}
-	if(b=5){printf("这一天是%d年的第%d天",a,c+120);}
-	if(b=6){printf("这一天是%d年的第%d天",a,c+151);}
-	if(b=7){printf("这一天是%d年的第%d天",a,c+181);}
-	if(b=8){printf("这一天是%d年的第%d天",a,c+212);}
-	if(b=9){printf("这一天是%d年的第%d天",a,c+243);}
-	if(b=10){printf("这一天是%d年的第%d天",a,c+273);}
-	if(b=11){printf("这一天是%d年的第%d天",a,c+304);}
-	if(b=12){printf("这一天是%d年的第%d天",a,c+334);}
+	if(b==1){printf("这一天是%d年的第%d天",a,c);}
+	if(b==2){printf("这一天是%d年的第%d天",a,c+31);}
+	if(b==3){printf("这一天是%d年的第%d天",a,c+59);}
+	if(b==4){printf("这一天是%d年的第%d天",a,c+90);}
+	if(b==5){printf("这一天是%d年的第%d天",a,c+120);}
+	if(b==6){printf("这一天是%d年的第%d天",a,c+151);}
+	if(b==7){printf("这一天是%d年的第%d天",a,c+181);}
+	if(b==8){printf("这一天是%d年的第%d天",a,c+212);}
+	if(b==9){printf("这一天是%d年的第%d天",a,c+243);}
+	if(b==10){printf("这一天是%d年的第%d天",a,c+273);}
+	if(b==11){printf("这一天是%d年的第%d天",a,c+304);}
+	if(b==12){printf("这一天是%d年的第%d天",a,c+334);}
 	}
 }
