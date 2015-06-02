@@ -1,0 +1,80 @@
+#include<stdio.h>
+void main()
+{
+	void tran(int *p);
+	int arr[5][5],i,j;
+	int *p=arr[0];
+	for(i=0;i<5;i++)
+	{
+		  for(j=0;j<5;j++)
+			    scanf("%d",p+i*5+j);
+	}
+	tran(p);
+  for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			printf("%4d",arr[i][j]);
+		}
+		printf("\n");
+	}
+}
+void tran(int *p)
+{
+	int i,j,t;
+	int * pmax, * pmin;
+	pmax=pmin=p;
+    for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(*pmax<*(p+5*i+j))
+				pmax=p+5*i+j;
+            if(*pmin>*(p+5*i+j))
+				pmin=p+5*i+j;
+		}
+	}
+	t=*pmax;
+	*pmax=*(p+12);
+	*(p+12)=t;
+	t=*pmin;
+	*pmin=*p;
+	*p=t;
+	pmin=p+1;
+	for(i=1;i<25;i++)
+	{
+		if(*pmin>*(p+i))
+			pmin=p+i;
+	}
+	t=*pmin;
+	*pmin=*(p+4);
+	*(p+4)=t;
+	pmin=p+1;
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if((i==0&&j==0)||(i==0&&j==4))
+				continue;
+		    if(*pmin>*(p+i*5+j))
+			    pmin=p+i*5+j;
+		}
+	}
+	t=*pmin;
+	*pmin=*(p+20);
+	*(p+20)=t;
+	pmin=p+1;
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if((i==0&&j==0)||(i==0&&j==4)||(i==4&&j==0))
+				continue;
+		    if(*pmin>*(p+i*5+j))
+			    pmin=p+i*5+j;
+		}
+	}
+	t=*pmin;
+	*pmin=*(p+24);
+	*(p+24)=t;
+}
