@@ -1,0 +1,69 @@
+
+#include<stdio.h>
+void r(int a[5][5])
+{
+	int i,j,max=a[0][0],min=a[2][2],t,s,c;
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(max<a[i][j]){max=a[i][j];s=i;c=j;}
+		}
+	}
+	t=a[2][2];a[2][2]=a[s][c];a[s][c]=t;
+    for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(min>a[i][j]){min=a[i][j];s=i;c=j;}
+		}
+	}
+	t=a[0][0];a[0][0]=a[s][c];a[s][c]=t;
+	min=a[2][2];
+    for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(min>a[i][j]&&a[i][j]>a[0][0]){min=a[i][j];s=i;c=j;}
+		}
+	}
+	t=a[0][4];a[0][4]=a[s][c];a[s][c]=t;
+	min=a[2][2];
+    for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(min>a[i][j]&&a[i][j]>a[0][4]){min=a[i][j];s=i;c=j;}
+		}
+	}
+	t=a[4][0];a[4][0]=a[s][c];a[s][c]=t;
+	min=a[2][2];
+    for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(min>a[i][j]&&a[i][j]>a[4][0]){min=a[i][j];s=i;c=j;}
+		}
+	}
+	t=a[4][4];a[4][4]=a[s][c];a[s][c]=t;
+}
+void main()
+{
+	int a[5][5],i,j;
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	r(a);
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			printf("%5d",a[i][j]);
+		}
+		printf("\n");
+	}
+}
