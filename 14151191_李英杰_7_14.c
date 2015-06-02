@@ -1,6 +1,6 @@
 #include<stdio.h>
-#define N 10
-#define M 5
+#define N 3
+#define M 2
 int main()
 {
 	void print(float (*p)[M+1]);
@@ -43,7 +43,7 @@ void aver1(float (*p)[M+1])
 	}
 	for(i=0;i<N;i++)
 	{
-        printf("第%d名学生平均分为：%f\n",i+1,*(*(p+i)+M));
+        printf("第%d名学生平均分为：%.2f\n",i+1,*(*(p+i)+M));
 	}
 }
 void aver2(float (*p)[M+1])
@@ -62,7 +62,7 @@ void aver2(float (*p)[M+1])
 	}
 	for(j=0;j<M;j++)
 	{
-        printf("第%d门课程平均分为：%f\n",j+1,*(*(p+N)+j));
+        printf("第%d门课程平均分为：%.2f\n",j+1,*(*(p+N)+j));
 	}
 }
 void max(float (*p)[M+1])
@@ -80,7 +80,7 @@ void max(float (*p)[M+1])
 			}
 		}
 	}
-	printf("最高分数的是第%d名学生，第%d门课程，分数：%f\n",r+1,c+1,*(*(p+r)+c));
+	printf("最高分数的是第%d名学生，第%d门课程，分数：%.2f\n",r+1,c+1,*(*(p+r)+c));
 }
 void variance(float (*p)[M+1])
 {
@@ -92,6 +92,6 @@ void variance(float (*p)[M+1])
 		s1+=(*(*(p+i)+M))*(*(*(p+i)+M));
 		s2+=(*(*(p+i)+M))*(*(*(p+i)+M))/N/N;
 	}
-	va=s1/N+s2;
-	printf("平均分方差为:%f\n",va);
+	va=s1/N-s2;
+	printf("平均分方差为:%.2f\n",va);
 }
