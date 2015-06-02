@@ -1,0 +1,25 @@
+#include <stdio.h>
+int year,month,day;
+int m[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+
+int Cal(int year,int month,int day)
+{
+    int ans=0;
+    for (int i=1; i<month; i++)
+        ans=ans+m[i];
+    ans=ans+day;
+    if (month<=2)  return ans;
+     else
+     {
+         if (year%400==0 || (year%4==0&&year%100))  return ans+1;
+           else return ans;
+     }
+}
+
+
+int main()
+{
+    scanf("%d%d%d",&year,&month,&day);
+    printf("该天是该年的第 %d 天\n",Cal(year,month,day));
+	return 0;
+}
