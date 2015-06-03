@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<stdio.h>    //本代码纯属原创，如需转载，敬请向助教老师报告出处^^
 int main(){
 	void jisuan(int year,int month,int day);
 	int year,month,day;
