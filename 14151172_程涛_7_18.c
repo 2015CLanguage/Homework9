@@ -1,13 +1,3 @@
-void main()
-{
-	float grade[10][5];
-	input(grade);
-    average_student(grade);
-    average_classes(grade);
-    search_max(grade);
-    s(grade);
-}
-
 #include <stdio.h>
 void main()
 {
