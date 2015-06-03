@@ -38,7 +38,7 @@ void fangcha(float list[10][5]){
 	
 	
 }
-void max(float list[10][5]){
+void max(float list[10][5]){    //这段函数的思路是，用一个maxj列表存储每行最大值所在的列，比答案稍微繁了一点
 	int i,j,maxi,maxj[10]={0};
 	maxi=0;
 	for(i=0;i<10;i++){
