@@ -15,3 +15,14 @@ int strcmp(char(str1[20]),char(str2[20]))
     }
     return m;
 }
+void main()
+{
+    int s;
+    char str1[20],str2[20];
+    printf("please input two strings:\n");
+    scanf("%s",str1);
+    scanf("%s",str2);
+    s=strcmp(str1,str2);
+    printf("the result is:%d",s);
+    printf("\n");
+}
