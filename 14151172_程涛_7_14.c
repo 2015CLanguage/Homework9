@@ -90,3 +90,12 @@ void s(float(grade[10][5]))
 	s=sum2-sum*sum/100;
 	printf("平均分方差为：%.2f\n",s);
 }
+void main()
+{
+	float grade[10][5];
+	input(grade);
+        average_student(grade);
+        average_classes(grade);
+        search_max(grade);
+        s(grade);
+}
