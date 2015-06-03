@@ -17,57 +17,76 @@ void main()
     for(i=0;i<10;i++)
 	{
 		for(j=0;j<5;j++)
-		printf("%f",score[i][j]);
+		printf("%5.2f",score[i][j]);
+		printf("\n");
 	}
+    printf("\n");
     student_aver(score);
+    printf("\n");
 	court_aver(score);
+    printf("\n");
 	max(score);
+    printf("\n");
 	fangcha(score);
-
+    printf("\n");
 }
 
-void student_aver(float a[10][5])
+void student_aver(float a[10][5])//求同学的平均分
+{
+	float sum=0,aver;
+	int i,j;
+	for(i=0;i<10;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+		sum=sum+a[i][j];
+		}
+		aver=sum/5.00;
+		printf("学生%d的平均分为:\n",i+1);
+        printf("%5.2f\n",aver);
+		sum=0;
+	}
+}
+
+void court_aver(float a[10][5])//求科目的平均分
 {
 	float sum=0,aver;
 	int i,j;
 	for(i=0;i<5;i++)
-		for(j=0;j<10;j++)
-		{sum=sum+a[i][j];
-	     aver=sum/5.00;
-		 printf("学生%d的平均分为:\n",i+1);
-         printf("%f",aver);}
-}
-
-void court_aver(float a[10][5])
-{
-	float sum=0,aver;
-	int i,j;
-	for(j=0;j<10;j++)
 	{
-		sum=sum+a[i][j];
+		for(j=0;j<10;j++)
+		{
+			sum=sum+a[j][i];
+		}
 	    aver=sum/10.00;
-        printf("科目%d的平均分为:\n",j+1);
-        printf("%f",aver);}
+        printf("科目%d的平均分为:\n",i+1);
+        printf("%5.2f\n",aver);
+		sum=0;
+	}
 }
 
-void max(float a[10][5])
+void max(float a[10][5])//求最高分和它对应的同学及科目
 {
-	int m=0,n=0,i,j;
+	int m,n,i,j;
 	float b=a[0][0];
     for(i=0;i<10;i++)
 	{
 		for(j=0;j<5;j++)
-		{if(a[i][j]>b)
-		b=a[i][j];
-		m=i;
-		b=j;}
+		{
+			if(a[i][j]>b)
+			{
+				b=a[i][j];
+		        m=i;
+		        n=j;
+			}
+		}
 	}
-	printf("最高分为:%f",b);
+	printf("最高分为:%5.2f",b);
 	printf("  同学%d",m+1);
 	printf("  科目%d",n+1);
 }
 
-void fangcha(float a[10][5])
+void fangcha(float a[10][5])//求方差的函数
 {
 	int i,j;
 	float f,fa=0,fb=0,aver[10];
@@ -80,5 +99,5 @@ void fangcha(float a[10][5])
 	{fa=fa+(aver[i])*(aver[i]);
 	fb=fb+aver[i];}
 	f=(fa/10)-(fb/10)*(fb/10);
-	printf("方差为:%f",f);
+	printf("方差为:%5.2f",f);
 }
