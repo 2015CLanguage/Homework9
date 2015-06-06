@@ -20,7 +20,7 @@ int main()
 	int f2(int year);
 	int year, month, day,days;
 	printf("请输入年、月、日：");
-	scanf_s("%d,%d,%d", &year, &month, &day);
+	scanf("%d,%d,%d", &year, &month, &day);
 	days = f1(month, day);
 	if (f2(year) && month >= 3)
 		days = days + 1;
