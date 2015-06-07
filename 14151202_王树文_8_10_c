@@ -1,0 +1,69 @@
+#include<stdio.h>
+void f(int a[5][5]);
+int main()
+{
+	int a[5][5],i,j;
+	printf("请输入不同的数组元素值");
+	for(i=0;i<5;i++)
+	    for(j=0;j<5;j++)
+	        scanf("%5d",&a[i][j]);
+	f(a);
+    for(i=0;i<5;i++)
+	    {
+		    for(j=0;j<5;j++)
+		        printf("%5d",a[i][j]);
+		    printf("\n");
+		}
+	return 0;	    	
+}
+void f(int a[5][5])
+{
+	int i,j,*p,*m,*n,*y,*x,*z,max,m1,m2,m3,m4,t1,t2,t3,t4,t5;
+	p=&a[0][0];	
+	max=*p;
+	m=p;
+    for(i=0;i<5;i++)
+	    for(j=0;j<5;j++)
+		    if(max<*(p+5*i+j))
+			{
+				m=(p+5*i+j);
+			}
+	t1=*(p+12),*(p+12)=*m,*m=t1;
+    m1=*(p+12);
+    n=p;
+	for(i=0;i<5;i++)
+	    for(j=0;j<5;j++)
+	        if(m1>*(p+5*i+j))
+			{
+	            n=(p+5*i+j);    
+	        }
+	t2=*p,*p=*n,*n=t2; 
+    m2=*(p+12);
+	x=p+12;
+    for(i=0;i<5;i++)
+	    for(j=0;j<5;j++)
+	        if(m2>*(p+5*i+j)&&(*(p+5*i+j)!=*n))
+			{
+	            x=(p+5*i+j);	
+			}
+	t3=*(p+4),*(p+4)=*x,*x=t3;	
+	m3=*(p+12);
+	y=p+12;
+	for(i=0;i<5;i++)
+	    for(j=0;j<5;j++)
+	       if(m3>*(p+5*i+j)&&(*(p+5*i+j)!=*n)&&(*(p+5*i+j)!=*x))
+		   {
+		       y=(p+5*i+j);	
+	       }
+	t4=*(p+20),*(p+20)=*y,*y=t4;
+
+	m4=*p+12;
+	z=12+p;
+	for(i=0;i<5;i++)
+	    for(j=0;j<5;j++)
+	        if(m4>*(p+5*i+j)&&(*(p+5*i+j)!=*n)&&(*(p+5*i+j)!=*x)&&(*(p+5*i+j)!=*y))
+			{
+	            z=(p+5*i+j);	
+			}
+	t5=*(p+24),*(p+24)=*z,*z=t5;
+}
