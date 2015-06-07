@@ -1,0 +1,52 @@
+# include<stdio.h>
+int sum(int month, int day);
+int check(int year);
+int sum(int month, int day)                                                    
+
+//计算日期的函数
+{
+	int day_dell[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 
+
+};  //每个月的截止日期
+	int i;
+	for (i = 1; i<month; i++)                                               
+
+  //累加所给出的月份之前的所有天数
+		day += day_dell[i];
+	return day ;                                                            
+
+  //返回这个天数的值
+}
+int check(int year)                                                           
+
+//判断是否为闰年
+{
+	int check;
+	check = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;            
+
+  //如果年份能被4整除并且不能被100整除，或者能被400整除
+	return check;                                                           
+
+  //就返回这个年份的值
+}
+int main(void)
+{
+	int year, month, days, day;
+	printf("请输入年月日：");                                               
+
+  //提示信息
+	scanf("%d,%d,%d", &year, &month, &day);                                 
+
+  //获取数据
+	days = sum(month, day);                                                 
+
+  //调用函数
+	if (check(year) && month >= 3)                                          
+
+  //调用函数
+		days = days + 1;
+	printf("这是该年中的第%d天", days);                                     
+
+  //输出
+	return 0;
+}
