@@ -1,0 +1,118 @@
+#include<stdio.h>
+#define N 10         //定义行数
+#define M 5          //定义列数
+float score[N][M];   //全局变量：分数的二维数组，其中每行代表每个学生，每列代表每个科目
+float hang[N];       //全局数组：行
+float lie[M];        //全局数组：列
+int hang1;           //全局变量：最高分所在的行
+int lie1;            //最高分所在的列
+void input_score();
+void average_hang_score();
+void average_lie_score();
+float max();
+float D();
+
+void input_score()   //成绩录入函数
+{
+	int i,j;
+	for(i=0;i<N;i++)                               //分行录入每列的5个数据
+	{
+      printf("请输入第%2d个同学的成绩：\n",i+1);
+	  for(j=0;j<M;j++)
+		  scanf("%f",&score[i][j]);
+	}
+}
+void average_hang_score()                          //求每行的平均值（求每个同学的平均分）
+{
+    int i,j;
+	float sum=0;
+	for(i=0;i<N;i++)                               //分别对每行求和
+	{
+       for(j=0;j<M;j++)
+	   {
+		   sum=sum+score[i][j];
+		   hang[i]=sum/M;                            //对每行取平均值，并传出到全局变量hang[N]
+	   }
+	}
+}
+void average_lie_score()                           //对每列求平均值（每科的平均分）
+{
+    int i,j;
+	float sum=0;
+	for(i=0;i<M;i++)                               //分别对每列求和
+	{
+       for(j=0;j<N;j++)
+	   {
+		   sum=sum+score[j][i];
+		   lie[i]=sum/N;                             //对每列取平均值，，传到到全局变量lie[M]
+	   }
+	}
+}
+float max()                                        //求最高分
+{
+	int i,j;
+	float high=0.0;
+	for(i=0;i<N;i++)
+	{
+	    for(j=0;j<M;j++)
+		{
+             if (score[i][j]>high)
+			 {
+				 high=score[i][j];
+                 hang1=i+1;
+				 lie1=j+1;
+			 }
+		}
+	}
+	return high;
+}
+float D()                                          //求方差
+{
+	int i;
+	float sum,temp,a;
+	for(i=0,sum=0,temp=0;i<N;i++)
+	{
+		sum=sum+hang[i]*hang[i];
+		temp=temp+hang[i]/(i+1);
+	}
+	a=sum/N-temp;
+	return a;
+}
+int main()
+{
+    void input_score();
+    void average_hang_score();
+    void average_lie_score();
+    float max();
+    float D();
+    input_score();
+	average_hang_score();
+    average_lie_score();
+	int i,j;
+	float hightest_mark;
+	printf("学号  科目一    科目二    科目三    科目四    科目五\n");
+	for(i=0;i<N;i++)
+	{
+		printf("\n");
+		printf("%d",i+1);
+		printf("     ");
+		for(j=0;j<M-1;j++)
+		{
+			printf("%5.2f",score[i][j]);
+			printf("     ");
+		}
+		printf("%5.2f",hang[i]);
+
+	}
+	printf("\n平均分");
+	for(j=0;j<M;j++)
+	{
+		printf("%5.2f",lie[j]);
+	}
+	printf("\n");
+	printf("\n");
+	hightest_mark=max();
+	printf("最高分为：%3.2f，属于第%6d行第%6d列。\n",hightest_mark,hang1,lie1);
+	printf("方差为%5.2f",D());
+	return 0;
+}
