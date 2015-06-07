@@ -15,8 +15,8 @@ int main()
 	int m;
 	char s1[50], s2[50], *p1, *p2;
 	printf("请输入两个字符串\n");
-	scanf_s("%s", s1);
-	scanf_s("%s", s2);
+	scanf("%s", s1);
+	scanf("%s", s2);
 	p1 = &s1[0];
 	p2 = &s2[0];
 	m = strcmp(p1, p2);
