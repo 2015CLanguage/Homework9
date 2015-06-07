@@ -1,0 +1,95 @@
+# include<stdio.h>
+int main(void)
+{
+	void change(int * p);
+	int a[5][5]；
+	int	*p；
+	int i, j;
+	printf("输入二维数组：\n");
+	for (i = 0; i<5; i++)                    //记录5X5的行列式
+	{
+		for (j = 0; j<5; j++)
+			scanf("%d", &a[i][j]);
+	}
+	p = &a[0][0];                           //指针从第一行第一列开始
+	change(p);                              //调用函数
+	printf("改变后的数组为：\n");           //输出改变之后的行列式
+	for (i = 0; i<5; i++)
+	{
+		for (j = 0; j<5; j++)
+			printf("%4d", a[i][j]);
+		printf("\n");
+
+	}
+	return 0;
+}
+
+void change(int * p)                        //改变位置的函数
+{
+	int i, j, temp;
+	int * pmax, *pmin;
+	pmax = p;                               //最大值与最小值的指针的初始值
+
+均从第一行第一列的位置开始
+	pmin = p;
+	for (i = 0; i<5; i++)                   //在行列式中找出最大的数，与最
+
+小的数的地址
+		for (j = i; j<5; j++)
+		{
+		if (*pmax<*(p + 5 * i + j)) pmax = p + 5 * i + j;
+		if (*pmin>* (p + 5 * i + j)) pmin = p + 5 * i + j;
+
+		}
+	//中心元素的位置为p+12
+	temp = *(p + 12);                       //中间变量的值赋给第三行第三列
+
+的位置
+	*(p + 12) = *pmax;
+	*pmax = temp;
+	temp = *p;                              //最小值赋给左上角（第一行第一
+
+列）
+	*p = *pmin;
+	*pmin = temp;
+	pmin = p + 1;
+	for (i = 0; i < 5; i++)                   //重新找，找到第二小的，赋值
+
+给pmin
+		for (j = 0; j<5; j++)
+			if (((p + 5 * i + j) != p) && (*pmin>*(p + 5 * i + j)))
+				pmin = p + 5 * i + j;
+	temp = *pmin;
+	*pmin = *(p + 4);                       //将剩余的这个最小值，赋值给右
+
+上角（第一行第五列）
+	*(p + 4) = temp;
+	pmin = p + 1;
+	for (i = 0; i<5; i++)                   //接着找第三个，也就是剩下这些
+
+里最小的……
+		for (j = 0; j<5; j++)
+			if (((p + 5 * i + j) != p) && ((p + 5 * i + j) != (p + 
+
+4)) && (*pmin>*(p + 5 * i + j)))
+				pmin = p + 5 * i + j;
+	temp = *pmin;                           //最小值赋给左下角（第五行第一
+
+列）
+	*pmin = *(p+20);
+	*(p+20) = temp;
+	pmin = p+1;
+	for (i = 0; i<5; i++)                   //最后一个了T_T，找第四小的，赋
+
+值给pmin~~~
+		for (j = 0; j<5; j++)
+			if (((p + 5 * i + j) != p) && ((p + 5 * i + j) != (p + 
+
+4)) && ((p + 5 * i + j) != (p + 20)) && (*pmin>*(p + 5 * i + j)))
+				pmin = p + 5 * i + j;
+	temp = *pmin;                           //最小值赋给右下角（第五行第五
+
+列）
+	*pmin = *(p + 24);
+	*(p + 24) = temp;
+}
