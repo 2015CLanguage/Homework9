@@ -61,7 +61,7 @@ int main()
 	}
 	stu[i]=temp;
 	
-	if ((fp=fopen("stud_sort.txt","w+"))==NULL)
+	if ((fp=fopen("sort1.txt","w+"))==NULL)
     {
         printf("error\n");
         exit(0);
@@ -76,5 +76,3 @@ int main()
     fclose(fp);
     return 0;
 }
-
-  
